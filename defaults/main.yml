@@ -1,5 +1,4 @@
 ---
-# defaults file for rb.gortr
 
 GORTR:
   # string Bind address

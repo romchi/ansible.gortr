@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include rb.gortr"
+    - name: "Include ansible.gortr"
       include_role:
-        name: "rb.gortr"
+        name: "ansible.gortr"
