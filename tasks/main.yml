@@ -1,0 +1,66 @@
+---
+# tasks file for rb.gortr
+
+- name: Install required packages
+  apt:
+    name: curl
+    state: present
+
+- name: Register variable with latest GoRTR release
+  uri:                                                               
+    url: https://api.github.com/repos/cloudflare/gortr/releases/latest
+    return_content: true
+  register: gortr_reponse
+  tags:
+    - install
+
+- name: Register variable with debian package
+  set_fact:
+    cacheable: yes
+    debian_package: "{{ item }}"
+  when:
+    item.name is regex(".*amd64.deb")
+  loop:
+    "{{ gortr_reponse.json.assets }}"
+  tags:
+    - install
+
+- name: Download GoRTR deb package
+  get_url:
+    url: "{{ debian_package.browser_download_url }}"
+    dest: "./{{ debian_package.name }}"
+  tags:
+    - install
+
+- name: Install GoRTR deb package
+  apt:
+    deb: "./{{ debian_package.name }}"
+    state: present
+  tags:
+    - install
+
+- name: Remove deb package from system
+  file:
+    name: "./{{ debian_package.name }}"
+    state: absent
+  tags:
+    - install
+
+- name: Enable GoRTR service
+  service:
+    name: gortr
+    enabled: yes
+  notify:
+    - restart GoRTR
+
+- name: Prepare GoRTR config
+  template:
+    src: default/gortr.j2
+    dest: /etc/default/gortr
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - restart GoRTR
+  tags:
+    - configure
