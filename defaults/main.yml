@@ -1,71 +1,71 @@
 ---
 
-GORTR:
+gortr:
   # string Bind address
-  - bind: "0.0.0.0:8282"
+  bind: "0.0.0.0:8282"
   # string URL of the cached JSON data (default "https://rpki.cloudflare.com/rpki.json")
-  - cache: ""
+  cache: ""
   #  bool Check if file is still valid
-  - checktime: "true"
+  checktime: "true"
   # bool Enable Etag header
-  - etag: "true"
+  etag: "true"
   # string Export path
-  - export.path: "/rpki.json"
+  export.path: "/rpki.json"
   # string Sign export with key
-  - export.sign: ""
+  export.sign: ""
   # string Log level
-  - loglevel: "info"
+  loglevel: "info"
   # int Max simultaneous connections
-  - maxconn: 0
+  maxconn: 0
   # string  Metrics address
-  - metrics.addr: "0.0.0.0:8080"
+  metrics.addr: "0.0.0.0:8080"
   # string Metrics path
-  - metrics.path: "/metrics"
+  metrics.path: "/metrics"
   # bool Send notifications to clients
-  - notifications: "true"
+  notifications: "true"
   # int RTR protocol version 
-  - protocol: 1
+  protocol: 1
   # Refresh interval in seconds
-  - refresh: 600
+  refresh: 600
   # int Expire interval
-  - rtr.expire: 7200
+  rtr.expire: 7200
   # int Refresh interval
-  - rtr.refresh: 3600
+  rtr.refresh: 3600
   # int  Retry interval
-  - rtr.retry: 600
+  rtr.retry: 600
   # int Set session ID (if < 0: will be randomized)
-  - rtr.sessionid: -1
+  rtr.sessionid: -1
   # string Slurm configuration file (filters and assertions)
-  - slurm: ""
+  slurm: ""
   # bool Refresh along the cache
-  - slurm.refresh: "true"
+  slurm.refresh: "true"
   # bool Accept any SSH key
-  - ssh.auth.key.bypass: "false"
+  ssh.auth.key.bypass: "false"
   # string Authorized SSH key file (if blank, will use envvar GORTR_SSH_AUTHORIZEDKEYS
-  - ssh.auth.key.file: ""
+  ssh.auth.key.file: ""
   # string SSH password (if blank, will use envvar GORTR_SSH_PASSWORD)
-  - ssh.auth.password: ""
+  ssh.auth.password: ""
   # string SSH user
-  - ssh.auth.user: "rpki"
+  ssh.auth.user: "rpki"
   # string Bind address for SSH
-  - ssh.bind: ""
+  ssh.bind: ""
   # string SSH host key (default "private.pem")
-  - ssh.key: "private.pem"
+  ssh.key: "private.pem"
   # bool Enable key auth
-  - ssh.method.key: "false"
+  ssh.method.key: "false"
   # bool Enable password auth
-  - ssh.method.password: "false"
+  ssh.method.password: "false"
   # string Bind address for TLS
-  - tls.bind: ""
+  tls.bind: ""
   # string Certificate path
-  - tls.cert: ""
+  tls.cert: ""
   # string Private key path
-  - tls.key: ""
+  tls.key: ""
   # string User-Agent header
-  - useragent: "Cloudflare-GoRTR (+https://github.com/cloudflare/gortr)"
+  useragent: "Cloudflare-GoRTR (+https://github.com/cloudflare/gortr)"
   # string Use serial contained in file (disable, startup, full)
-  - useserial: "disable"
+  useserial: "disable"
   # bool Check signature using provided public key
-  - verify: "false"
+  verify: "false"
   # string Public key path (PEM file)
-  - verify.key: ""
+  verify.key: ""
