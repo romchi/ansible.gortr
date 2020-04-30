@@ -6,7 +6,7 @@
     state: present
 
 - name: Register variable with latest GoRTR release
-  uri:                                                               
+  uri:
     url: https://api.github.com/repos/cloudflare/gortr/releases/latest
     return_content: true
   register: gortr_reponse
